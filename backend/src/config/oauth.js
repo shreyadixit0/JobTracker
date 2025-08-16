@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import { Client } from '@azure/msal-node';
+import { ConfidentialClientApplication } from '@azure/msal-node';
 import dotenv from 'dotenv';
 
 dotenv.config();
