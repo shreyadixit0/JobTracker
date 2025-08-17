@@ -6,6 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useAuth } from '@/hooks/useAuth';
+import { useProfile } from '@/hooks/useProfile';
 import { useApplications } from '@/hooks/useApplications';
 import ApplicationForm from '@/components/ApplicationForm';
 import ApplicationCard from '@/components/ApplicationCard';
@@ -14,6 +15,7 @@ import { Plus, Search, Filter, BarChart3, Briefcase, Clock, CheckCircle, LogOut 
 
 const Dashboard = () => {
   const { user, signOut } = useAuth();
+  const { profile } = useProfile();
   const { applications, loading, stats, fetchApplications, deleteApplication } = useApplications();
   const navigate = useNavigate();
   
@@ -90,7 +92,7 @@ const Dashboard = () => {
         <div className="flex justify-between items-center mb-8">
           <div>
             <h1 className="text-3xl font-bold">Job Application Dashboard</h1>
-            <p className="text-muted-foreground">Welcome back, {user.email}!</p>
+            <p className="text-muted-foreground">Welcome back, {profile?.name || user.email}!</p>
           </div>
           <div className="flex gap-2">
             <Button onClick={() => setShowForm(true)}>
